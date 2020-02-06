@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 配置应用名称 -->
+    <dubbo:application name="p2p"/>
+
+    <!-- 配置注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="192.168.105.141:2181"/>
+
+    <!--配置consumer-->
+    <dubbo:reference interface="com.bjpowernode.p2p.service.loan.LoanInfoService" version="1.0.0" id="loanInfoService"
+                     check="false"/>
+
+    <dubbo:reference interface="com.bjpowernode.p2p.service.user.UserService" version="1.0.0" check="false"
+                     id="userService"/>
+
+    <dubbo:reference interface="com.bjpowernode.p2p.service.loan.BidInfoService" version="1.0.0" check="false"
+                     id="bidInfoService"/>
+
+    <dubbo:reference interface="com.bjpowernode.p2p.service.loan.FinanceAccountService" version="1.0.0" check="false"
+                     id="financeAccountService"/>
+
+    <dubbo:reference interface="com.bjpowernode.p2p.service.loan.RechargeRecordService" version="1.0.0" check="false"
+                     id="rechargeRecordService"/>
+
+    <dubbo:reference interface="com.bjpowernode.p2p.service.loan.IncomeRecordService" check="false" version="1.0.0"
+                     id="incomeRecordService"/>
+
+</beans>
